@@ -1,0 +1,27 @@
+--cpu Cortex-M3
+"minh_duc_project\startup_stm32f103xb.o"
+"minh_duc_project\main.o"
+"minh_duc_project\stm32f1xx_it.o"
+"minh_duc_project\stm32f1xx_hal_msp.o"
+"minh_duc_project\stm32f1xx_hal_gpio_ex.o"
+"minh_duc_project\stm32f1xx_hal_i2c.o"
+"minh_duc_project\stm32f1xx_hal.o"
+"minh_duc_project\stm32f1xx_hal_rcc.o"
+"minh_duc_project\stm32f1xx_hal_rcc_ex.o"
+"minh_duc_project\stm32f1xx_hal_gpio.o"
+"minh_duc_project\stm32f1xx_hal_dma.o"
+"minh_duc_project\stm32f1xx_hal_cortex.o"
+"minh_duc_project\stm32f1xx_hal_pwr.o"
+"minh_duc_project\stm32f1xx_hal_flash.o"
+"minh_duc_project\stm32f1xx_hal_flash_ex.o"
+"minh_duc_project\stm32f1xx_hal_exti.o"
+"minh_duc_project\stm32f1xx_hal_spi.o"
+"minh_duc_project\stm32f1xx_hal_uart.o"
+"minh_duc_project\system_stm32f1xx.o"
+"minh_duc_project\uart.o"
+"minh_duc_project\lcd.o"
+"minh_duc_project\rc522.o"
+--strict --scatter "Minh_Duc_Project\Minh_Duc_Project.sct"
+--summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
+--info sizes --info totals --info unused --info veneers
+--list "Minh_Duc_Project.map" -o Minh_Duc_Project\Minh_Duc_Project.axf
