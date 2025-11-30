@@ -145,7 +145,7 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   while (1)
   {
-		//uart_handle();
+		uart_handle();
 		MFRC522_Init();
 		if(MFRC522_Request(PICC_REQIDL, str) == MI_OK)
 		{

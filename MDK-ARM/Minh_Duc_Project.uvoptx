@@ -175,6 +175,11 @@
           <WinNumber>1</WinNumber>
           <ItemText>last_uid</ItemText>
         </Ww>
+        <Ww>
+          <count>5</count>
+          <WinNumber>1</WinNumber>
+          <ItemText>member_card_index,0x0A</ItemText>
+        </Ww>
       </WatchWindow1>
       <Tracepoint>
         <THDelay>0</THDelay>
