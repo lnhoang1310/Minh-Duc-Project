@@ -145,26 +145,16 @@ int main(void)
             if (MFRC522_Anticoll(uid) == MI_OK)
             {
                 MFRC522_SelectTag(uid);
-
-                lcd_clear(&lcd);
-                lcd_gotoxy(&lcd, 0, 0);
-                lcd_send_string(&lcd, "Card UID:");
-
-                char buffer[16];
-                sprintf(buffer, "%02X %02X %02X %02X", 
-                        uid[0], uid[1], uid[2], uid[3]);
-                lcd_gotoxy(&lcd, 0, 1);
-                lcd_send_string(&lcd, buffer);
-
+				lcd_gotoxy(&lcd, 0, 1);
                 if (isValidCard(uid))
                 {
                     lcd_clear(&lcd);
-                    lcd_send_string(&lcd, "Access Granted");
+                    lcd_send_string(&lcd, " Access Granted ");
                 }
                 else
                 {
                     lcd_clear(&lcd);
-                    lcd_send_string(&lcd, "Access Denied");
+                    lcd_send_string(&lcd, " Access  Denied ");
                 }
                 MFRC522_Halt();
             }
