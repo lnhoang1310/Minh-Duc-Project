@@ -1284,13 +1284,13 @@ Image Symbol Table
     i.lcd_send_string                        0x080025ea   Section        0  lcd.o(i.lcd_send_string)
     i.main                                   0x08002604   Section        0  main.o(i.main)
     i.uart_handle                            0x08002784   Section        0  uart.o(i.uart_handle)
-    i.uart_receive_data                      0x080027d0   Section        0  uart.o(i.uart_receive_data)
-    .constdata                               0x08002800   Section       18  stm32f1xx_hal_rcc.o(.constdata)
-    aPredivFactorTable                       0x08002800   Data           2  stm32f1xx_hal_rcc.o(.constdata)
-    aPLLMULFactorTable                       0x08002802   Data          16  stm32f1xx_hal_rcc.o(.constdata)
-    .constdata                               0x08002812   Section       16  system_stm32f1xx.o(.constdata)
-    .constdata                               0x08002822   Section        8  system_stm32f1xx.o(.constdata)
-    .conststring                             0x0800282c   Section       77  uart.o(.conststring)
+    i.uart_receive_data                      0x080027d4   Section        0  uart.o(i.uart_receive_data)
+    .constdata                               0x08002804   Section       18  stm32f1xx_hal_rcc.o(.constdata)
+    aPredivFactorTable                       0x08002804   Data           2  stm32f1xx_hal_rcc.o(.constdata)
+    aPLLMULFactorTable                       0x08002806   Data          16  stm32f1xx_hal_rcc.o(.constdata)
+    .constdata                               0x08002816   Section       16  system_stm32f1xx.o(.constdata)
+    .constdata                               0x08002826   Section        8  system_stm32f1xx.o(.constdata)
+    .conststring                             0x08002830   Section       77  uart.o(.conststring)
     .data                                    0x20000000   Section       28  main.o(.data)
     .data                                    0x2000001c   Section       12  stm32f1xx_hal.o(.data)
     .data                                    0x20000028   Section        4  system_stm32f1xx.o(.data)
@@ -1527,12 +1527,12 @@ Image Symbol Table
     lcd_send_data                            0x080025b1   Thumb Code    58  lcd.o(i.lcd_send_data)
     lcd_send_string                          0x080025eb   Thumb Code    24  lcd.o(i.lcd_send_string)
     main                                     0x08002605   Thumb Code   308  main.o(i.main)
-    uart_handle                              0x08002785   Thumb Code    62  uart.o(i.uart_handle)
-    uart_receive_data                        0x080027d1   Thumb Code    38  uart.o(i.uart_receive_data)
-    AHBPrescTable                            0x08002812   Data          16  system_stm32f1xx.o(.constdata)
-    APBPrescTable                            0x08002822   Data           8  system_stm32f1xx.o(.constdata)
-    Region$$Table$$Base                      0x0800287c   Number         0  anon$$obj.o(Region$$Table)
-    Region$$Table$$Limit                     0x0800289c   Number         0  anon$$obj.o(Region$$Table)
+    uart_handle                              0x08002785   Thumb Code    66  uart.o(i.uart_handle)
+    uart_receive_data                        0x080027d5   Thumb Code    38  uart.o(i.uart_receive_data)
+    AHBPrescTable                            0x08002816   Data          16  system_stm32f1xx.o(.constdata)
+    APBPrescTable                            0x08002826   Data           8  system_stm32f1xx.o(.constdata)
+    Region$$Table$$Base                      0x08002880   Number         0  anon$$obj.o(Region$$Table)
+    Region$$Table$$Limit                     0x080028a0   Number         0  anon$$obj.o(Region$$Table)
     validCount                               0x20000000   Data           1  main.o(.data)
     data_rx                                  0x20000001   Data           1  main.o(.data)
     cardType                                 0x20000002   Data           2  main.o(.data)
@@ -1562,9 +1562,9 @@ Memory Map of the image
 
   Image Entry point : 0x080000ed
 
-  Load Region LR_IROM1 (Base: 0x08000000, Size: 0x000028fc, Max: 0x00010000, ABSOLUTE)
+  Load Region LR_IROM1 (Base: 0x08000000, Size: 0x00002900, Max: 0x00010000, ABSOLUTE)
 
-    Execution Region ER_IROM1 (Exec base: 0x08000000, Load base: 0x08000000, Size: 0x0000289c, Max: 0x00010000, ABSOLUTE)
+    Execution Region ER_IROM1 (Exec base: 0x08000000, Load base: 0x08000000, Size: 0x000028a0, Max: 0x00010000, ABSOLUTE)
 
     Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
 
@@ -1734,30 +1734,30 @@ Memory Map of the image
     0x080025ea   0x080025ea   0x00000018   Code   RO         2552    i.lcd_send_string   lcd.o
     0x08002602   0x08002602   0x00000002   PAD
     0x08002604   0x08002604   0x00000180   Code   RO           18    i.main              main.o
-    0x08002784   0x08002784   0x0000004c   Code   RO         2500    i.uart_handle       uart.o
-    0x080027d0   0x080027d0   0x00000030   Code   RO         2501    i.uart_receive_data  uart.o
-    0x08002800   0x08002800   0x00000012   Data   RO          988    .constdata          stm32f1xx_hal_rcc.o
-    0x08002812   0x08002812   0x00000010   Data   RO         2464    .constdata          system_stm32f1xx.o
-    0x08002822   0x08002822   0x00000008   Data   RO         2465    .constdata          system_stm32f1xx.o
-    0x0800282a   0x0800282a   0x00000002   PAD
-    0x0800282c   0x0800282c   0x0000004d   Data   RO         2503    .conststring        uart.o
-    0x08002879   0x08002879   0x00000003   PAD
-    0x0800287c   0x0800287c   0x00000020   Data   RO         2905    Region$$Table       anon$$obj.o
+    0x08002784   0x08002784   0x00000050   Code   RO         2500    i.uart_handle       uart.o
+    0x080027d4   0x080027d4   0x00000030   Code   RO         2501    i.uart_receive_data  uart.o
+    0x08002804   0x08002804   0x00000012   Data   RO          988    .constdata          stm32f1xx_hal_rcc.o
+    0x08002816   0x08002816   0x00000010   Data   RO         2464    .constdata          system_stm32f1xx.o
+    0x08002826   0x08002826   0x00000008   Data   RO         2465    .constdata          system_stm32f1xx.o
+    0x0800282e   0x0800282e   0x00000002   PAD
+    0x08002830   0x08002830   0x0000004d   Data   RO         2503    .conststring        uart.o
+    0x0800287d   0x0800287d   0x00000003   PAD
+    0x08002880   0x08002880   0x00000020   Data   RO         2905    Region$$Table       anon$$obj.o
 
 
-    Execution Region RW_IRAM1 (Exec base: 0x20000000, Load base: 0x0800289c, Size: 0x00000810, Max: 0x00005000, ABSOLUTE)
+    Execution Region RW_IRAM1 (Exec base: 0x20000000, Load base: 0x080028a0, Size: 0x00000810, Max: 0x00005000, ABSOLUTE)
 
     Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
 
-    0x20000000   0x0800289c   0x0000001c   Data   RW           21    .data               main.o
-    0x2000001c   0x080028b8   0x0000000c   Data   RW          825    .data               stm32f1xx_hal.o
-    0x20000028   0x080028c4   0x00000004   Data   RW         2466    .data               system_stm32f1xx.o
-    0x2000002c   0x080028c8   0x00000034   Data   RW         2504    .data               uart.o
+    0x20000000   0x080028a0   0x0000001c   Data   RW           21    .data               main.o
+    0x2000001c   0x080028bc   0x0000000c   Data   RW          825    .data               stm32f1xx_hal.o
+    0x20000028   0x080028c8   0x00000004   Data   RW         2466    .data               system_stm32f1xx.o
+    0x2000002c   0x080028cc   0x00000034   Data   RW         2504    .data               uart.o
     0x20000060        -       0x000000f4   Zero   RW           19    .bss                main.o
     0x20000154        -       0x00000044   Zero   RW           20    .bss                main.o
     0x20000198        -       0x00000014   Zero   RW         2502    .bss                uart.o
     0x200001ac        -       0x00000060   Zero   RW         2779    .bss                c_w.l(libspace.o)
-    0x2000020c   0x080028fc   0x00000004   PAD
+    0x2000020c   0x08002900   0x00000004   PAD
     0x20000210        -       0x00000200   Zero   RW            2    HEAP                startup_stm32f103xb.o
     0x20000410        -       0x00000400   Zero   RW            1    STACK               startup_stm32f103xb.o
 
@@ -1784,10 +1784,10 @@ Image component sizes
       1580         24          0          0          0      12562   stm32f1xx_hal_uart.o
         44         12          0          0          0       4793   stm32f1xx_it.o
          2          0         24          4          0       1131   system_stm32f1xx.o
-       124         24         77         52         20       2249   uart.o
+       128         24         77         52         20       2253   uart.o
 
     ----------------------------------------------------------------------
-      9370        496        392         96       1868     512583   Object Totals
+      9374        496        392         96       1868     512587   Object Totals
          0          0         32          0          0          0   (incl. Generated)
         22          0          5          0          0          0   (incl. Padding)
 
@@ -1840,15 +1840,15 @@ Image component sizes
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   
 
-     10004        512        392         96       1968     508315   Grand Totals
-     10004        512        392         96       1968     508315   ELF Image Totals
-     10004        512        392         96          0          0   ROM Totals
+     10008        512        392         96       1968     508319   Grand Totals
+     10008        512        392         96       1968     508319   ELF Image Totals
+     10008        512        392         96          0          0   ROM Totals
 
 ==============================================================================
 
-    Total RO  Size (Code + RO Data)                10396 (  10.15kB)
+    Total RO  Size (Code + RO Data)                10400 (  10.16kB)
     Total RW  Size (RW Data + ZI Data)              2064 (   2.02kB)
-    Total ROM Size (Code + RO Data + RW Data)      10492 (  10.25kB)
+    Total ROM Size (Code + RO Data + RW Data)      10496 (  10.25kB)
 
 ==============================================================================
 

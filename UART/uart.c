@@ -30,6 +30,7 @@ void uart_receive_data(uint8_t data){
 
 void uart_handle(void){
 	if(flag_cplt){
+		flag_cplt = 0;
 		for(uint8_t i=0; i<sizeof(list_command)/sizeof(Command_t); i++){
 			if(strcmp((char*)uart_buffer, list_command[i].request)){
 				HAL_UART_Transmit_DMA(&huart1, (uint8_t*)list_command[i].response, strlen(list_command[i].response));
