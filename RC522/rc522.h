@@ -10,8 +10,8 @@ extern SPI_HandleTypeDef hspi1;
 #define HSPI_INSTANCE				&hspi1
 #define MFRC522_CS_PORT				GPIOA
 #define MFRC522_CS_PIN				GPIO_PIN_4
-#define MFRC522_RST_PORT			GPIOB
-#define MFRC522_RST_PIN				GPIO_PIN_11
+#define MFRC522_RST_PORT			GPIOA
+#define MFRC522_RST_PIN				GPIO_PIN_3
 
 // MFRC522 commands. Described in chapter 10 of the datasheet.
 #define PCD_IDLE              0x00               // no action, cancels current command execution

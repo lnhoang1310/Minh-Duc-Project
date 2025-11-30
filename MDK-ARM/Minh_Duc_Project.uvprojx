@@ -340,7 +340,7 @@
               <MiscControls></MiscControls>
               <Define>USE_HAL_DRIVER,STM32F103xB</Define>
               <Undefine></Undefine>
-              <IncludePath>../Core/Inc;../Drivers/STM32F1xx_HAL_Driver/Inc;../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy;../Drivers/CMSIS/Device/ST/STM32F1xx/Include;../Drivers/CMSIS/Include;../LCD;../RC522;../UART</IncludePath>
+              <IncludePath>../Core/Inc;../Drivers/STM32F1xx_HAL_Driver/Inc;../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy;../Drivers/CMSIS/Device/ST/STM32F1xx/Include;../Drivers/CMSIS/Include;../LCD;../RC522;../UART;../RFID;../Flash_lib</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -523,6 +523,26 @@
               <FileName>rc522.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\RC522\rc522.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>RFID</GroupName>
+          <Files>
+            <File>
+              <FileName>rfid.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\RFID\rfid.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>FLASH</GroupName>
+          <Files>
+            <File>
+              <FileName>Flash.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Flash_lib\Flash.c</FilePath>
             </File>
           </Files>
         </Group>

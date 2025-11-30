@@ -21,6 +21,8 @@
 "minh_duc_project\uart.o"
 "minh_duc_project\lcd.o"
 "minh_duc_project\rc522.o"
+"minh_duc_project\rfid.o"
+"minh_duc_project\flash.o"
 --strict --scatter "Minh_Duc_Project\Minh_Duc_Project.sct"
 --summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
 --info sizes --info totals --info unused --info veneers

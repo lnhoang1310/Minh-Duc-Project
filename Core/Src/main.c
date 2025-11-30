@@ -24,6 +24,7 @@
 #include "uart.h"
 #include "lcd.h"
 #include "RC522.h"
+#include "rfid.h"
 #include <stdbool.h>
 #include <string.h>
 #include <stdio.h>
@@ -71,25 +72,28 @@ static void MX_USART1_UART_Init(void);
 /* USER CODE BEGIN 0 */
 uint8_t data_rx;
 uchar uid[5];
-uchar cardType[2];
-
-uint8_t validUID[][4] = {
-    {0xDE, 0xAD, 0xBE, 0xEF},
-    {0x12, 0x34, 0x56, 0x78},
-};
-uint8_t validCount = 2;
-
-bool isValidCard(uint8_t *u) {
-    for (int i = 0; i < validCount; i++) {
-        if (memcmp(u, validUID[i], 4) == 0) return true;
-    }
-    return false;
-}
+uint8_t str[16]; 
 
 void HAL_UART_RxCpltCallback(UART_HandleTypeDef* huart){
 	if(huart->Instance == huart1.Instance){
 		uart_receive_data(data_rx);
 		HAL_UART_Receive_IT(&huart1, &data_rx, 1);
+	}
+}
+
+void display_state(){
+	lcd_gotoxy(&lcd, 0, 0);
+	switch(status)
+	{
+		case RFID_ADD_CARD:
+			lcd_send_string(&lcd, "  ADD NEW CARD  ");
+			break;
+		case RFID_CHECK_CARD:
+			lcd_send_string(&lcd, "   CHECK CARD   ");
+			break;
+		case RFID_REMOVE_CARD:
+			lcd_send_string(&lcd, "  REMOVE  CARD  ");
+			break;
 	}
 }
 /* USER CODE END 0 */
@@ -129,36 +133,61 @@ int main(void)
   MX_USART1_UART_Init();
   /* USER CODE BEGIN 2 */
 	lcd_init(&lcd, &hi2c1, LCD_ADDRESS);
-	MFRC522_Init();
 	HAL_UART_Receive_IT(&huart1, &data_rx, 1);
 	lcd_gotoxy(&lcd, 0, 0);
 	lcd_send_string(&lcd, "RFID System");
+	RFID_Init();
+	HAL_Delay(3000);
+	display_state();
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   while (1)
   {
-	  uart_handle();
-	  if (MFRC522_Request(PICC_REQIDL, cardType) == MI_OK)
-        {
-            if (MFRC522_Anticoll(uid) == MI_OK)
-            {
-                MFRC522_SelectTag(uid);
+		//uart_handle();
+		MFRC522_Init();
+		if(MFRC522_Request(PICC_REQIDL, str) == MI_OK)
+		{
+			if(MFRC522_Anticoll(uid) == MI_OK)
+			{
+				MFRC522_SelectTag(uid);
+
+				Handle_State state = RFID_Handle(uid);
 				lcd_gotoxy(&lcd, 0, 1);
-                if (isValidCard(uid))
-                {
-                    lcd_clear(&lcd);
-                    lcd_send_string(&lcd, " Access Granted ");
-                }
-                else
-                {
-                    lcd_clear(&lcd);
-                    lcd_send_string(&lcd, " Access  Denied ");
-                }
-                MFRC522_Halt();
-            }
-        }
+				switch(state)
+				{
+					case ADD_CARD_OK:
+						lcd_send_string(&lcd, "Added Card      ");
+						break;
+					case ADD_CARD_ERROR:
+						lcd_send_string(&lcd, "Add Card Fail   ");
+						break;
+					case CHECK_CARD_VALID:
+						lcd_send_string(&lcd, "Access Granted  ");
+						break;
+					case CHECK_CARD_INVALID:
+						lcd_send_string(&lcd, "Access Denied   ");
+						break;
+					case REMOVE_CARD_OK:
+						lcd_send_string(&lcd, "Removed Card    ");
+						break;
+					case REMOVE_CARD_ERROR:
+						lcd_send_string(&lcd, "Remove Fail     ");
+						break;
+					case CHECK_NO_CARD:
+					default:
+						break;
+				}
+
+				display_state();
+
+				MFRC522_Halt();
+				HAL_Delay(1000);
+			}
+		}
+		lcd_gotoxy(&lcd, 0, 1);
+		lcd_send_string(&lcd, "Waiting Card ...");
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
@@ -262,7 +291,7 @@ static void MX_SPI1_Init(void)
   hspi1.Init.CLKPolarity = SPI_POLARITY_LOW;
   hspi1.Init.CLKPhase = SPI_PHASE_1EDGE;
   hspi1.Init.NSS = SPI_NSS_SOFT;
-  hspi1.Init.BaudRatePrescaler = SPI_BAUDRATEPRESCALER_4;
+  hspi1.Init.BaudRatePrescaler = SPI_BAUDRATEPRESCALER_8;
   hspi1.Init.FirstBit = SPI_FIRSTBIT_MSB;
   hspi1.Init.TIMode = SPI_TIMODE_DISABLE;
   hspi1.Init.CRCCalculation = SPI_CRCCALCULATION_DISABLE;
@@ -333,6 +362,7 @@ static void MX_DMA_Init(void)
   */
 static void MX_GPIO_Init(void)
 {
+  GPIO_InitTypeDef GPIO_InitStruct = {0};
   /* USER CODE BEGIN MX_GPIO_Init_1 */
 
   /* USER CODE END MX_GPIO_Init_1 */
@@ -341,6 +371,16 @@ static void MX_GPIO_Init(void)
   __HAL_RCC_GPIOD_CLK_ENABLE();
   __HAL_RCC_GPIOA_CLK_ENABLE();
   __HAL_RCC_GPIOB_CLK_ENABLE();
+
+  /*Configure GPIO pin Output Level */
+  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_3|GPIO_PIN_4, GPIO_PIN_RESET);
+
+  /*Configure GPIO pins : PA3 PA4 */
+  GPIO_InitStruct.Pin = GPIO_PIN_3|GPIO_PIN_4;
+  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+  HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
 
   /* USER CODE BEGIN MX_GPIO_Init_2 */
 

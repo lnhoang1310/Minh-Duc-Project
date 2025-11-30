@@ -31,6 +31,7 @@ minh_duc_project\main.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.
 minh_duc_project\main.o: ../UART/uart.h
 minh_duc_project\main.o: ../LCD/lcd.h
 minh_duc_project\main.o: ../RC522/RC522.h
+minh_duc_project\main.o: ../RFID/rfid.h
 minh_duc_project\main.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdbool.h
 minh_duc_project\main.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
 minh_duc_project\main.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
