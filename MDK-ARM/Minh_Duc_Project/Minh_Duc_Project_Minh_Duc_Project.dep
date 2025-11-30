@@ -32,7 +32,7 @@ I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_spi.h)(0x66C8AE0F)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h)(0x66C8AE0F)
 I (../UART/uart.h)(0x692B1D07)
 I (../LCD/lcd.h)(0x684EFAC6)
-I (../RC522/RC522.h)(0x692BD2F5)
+I (../RC522/RC522.h)(0x692BE2E2)
 I (../RFID/rfid.h)(0x692BCA38)
 I (C:\Keil_v5\ARM\ARMCC\include\stdbool.h)(0x5EC78406)
 I (C:\Keil_v5\ARM\ARMCC\include\string.h)(0x5EC78414)
@@ -575,8 +575,8 @@ I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_i2c.h)(0x66C8AE0F)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pwr.h)(0x66C8AE0F)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_spi.h)(0x66C8AE0F)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h)(0x66C8AE0F)
-F (..\RC522\rc522.c)(0x692BD2F5)(--c99 -c --cpu Cortex-M3 -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include -I ../LCD -I ../RC522 -I ../UART -I ../RFID -I ../Flash_lib-I.\RTE\_Minh_Duc_Project-IC:\Users\Dell\AppData\Local\Arm\Packs\ARM\CMSIS\5.9.0\CMSIS\Core\Include-IC:\Users\Dell\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\Include-D__UVISION_VERSION="538" -D_RTE_ -DSTM32F10X_MD -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F103xB-o minh_duc_project\rc522.o --omf_browse minh_duc_project\rc522.crf --depend minh_duc_project\rc522.d)
-I (..\RC522\RC522.h)(0x692BD2F5)
+F (..\RC522\rc522.c)(0x692BE2E2)(--c99 -c --cpu Cortex-M3 -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include -I ../LCD -I ../RC522 -I ../UART -I ../RFID -I ../Flash_lib-I.\RTE\_Minh_Duc_Project-IC:\Users\Dell\AppData\Local\Arm\Packs\ARM\CMSIS\5.9.0\CMSIS\Core\Include-IC:\Users\Dell\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\Include-D__UVISION_VERSION="538" -D_RTE_ -DSTM32F10X_MD -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F103xB-o minh_duc_project\rc522.o --omf_browse minh_duc_project\rc522.crf --depend minh_duc_project\rc522.d)
+I (..\RC522\RC522.h)(0x692BE2E2)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h)(0x66C8AE0F)
 I (../Core/Inc/stm32f1xx_hal_conf.h)(0x692B1D2F)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rcc.h)(0x66C8AE0F)

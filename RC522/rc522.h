@@ -1,3 +1,5 @@
+#ifndef RC522_H
+#define RC522_H
 #include "stm32f1xx_hal.h"
 
 #define	uchar	unsigned char
@@ -14,28 +16,28 @@ extern SPI_HandleTypeDef hspi1;
 #define MFRC522_RST_PIN				GPIO_PIN_3
 
 // MFRC522 commands. Described in chapter 10 of the datasheet.
-#define PCD_IDLE              0x00               // no action, cancels current command execution
-#define PCD_AUTHENT           0x0E               // performs the MIFARE standard authentication as a reader
-#define PCD_RECEIVE           0x08               // activates the receiver circuits
-#define PCD_TRANSMIT          0x04               // transmits data from the FIFO buffer
-#define PCD_TRANSCEIVE        0x0C               // transmits data from FIFO buffer to antenna and automatically activates the receiver after transmission
-#define PCD_RESETPHASE        0x0F               // resets the MFRC522
-#define PCD_CALCCRC           0x03               // activates the CRC coprocessor or performs a self-test
+#define PCD_IDLE              0x00
+#define PCD_AUTHENT           0x0E
+#define PCD_RECEIVE           0x08
+#define PCD_TRANSMIT          0x04
+#define PCD_TRANSCEIVE        0x0C
+#define PCD_RESETPHASE        0x0F
+#define PCD_CALCCRC           0x03
 
 // Commands sent to the PICC.
-#define PICC_REQIDL           0x26               // REQuest command, Type A. Invites PICCs in state IDLE to go to READY and prepare for anticollision or selection. 7 bit frame.
-#define PICC_REQALL           0x52               // Wake-UP command, Type A. Invites PICCs in state IDLE and HALT to go to READY(*) and prepare for anticollision or selection. 7 bit frame.
-#define PICC_ANTICOLL         0x93               // Anti collision/Select, Cascade Level 1
-#define PICC_SElECTTAG        0x93               // Anti collision/Select, Cascade Level 2
-#define PICC_AUTHENT1A        0x60               // Perform authentication with Key A
-#define PICC_AUTHENT1B        0x61               // Perform authentication with Key B
-#define PICC_READ             0x30               // Reads one 16 byte block from the authenticated sector of the PICC. Also used for MIFARE Ultralight.
-#define PICC_WRITE            0xA0               // Writes one 16 byte block to the authenticated sector of the PICC. Called "COMPATIBILITY WRITE" for MIFARE Ultralight.
-#define PICC_DECREMENT        0xC0               // Decrements the contents of a block and stores the result in the internal data register.
-#define PICC_INCREMENT        0xC1               // Increments the contents of a block and stores the result in the internal data register
-#define PICC_RESTORE          0xC2               // Reads the contents of a block into the internal data register.
-#define PICC_TRANSFER         0xB0               // Writes the contents of the internal data register to a block.
-#define PICC_HALT             0x50               // HaLT command, Type A. Instructs an ACTIVE PICC to go to state HALT.
+#define PICC_REQIDL           0x26
+#define PICC_REQALL           0x52
+#define PICC_ANTICOLL         0x93
+#define PICC_SElECTTAG        0x93
+#define PICC_AUTHENT1A        0x60
+#define PICC_AUTHENT1B        0x61
+#define PICC_READ             0x30
+#define PICC_WRITE            0xA0
+#define PICC_DECREMENT        0xC0
+#define PICC_INCREMENT        0xC1
+#define PICC_RESTORE          0xC2
+#define PICC_TRANSFER         0xB0
+#define PICC_HALT             0x50
 
 
 // Success or error code is returned when communication
@@ -44,7 +46,6 @@ extern SPI_HandleTypeDef hspi1;
 #define MI_ERR                2
 
 
-// MFRC522 registers. Described in chapter 9 of the datasheet.
 // Page 0: Command and Status
 #define     Reserved00            0x00
 #define     CommandReg            0x01
@@ -114,7 +115,6 @@ extern SPI_HandleTypeDef hspi1;
 #define     Reserved33            0x3E
 #define     Reserved34			  0x3F
 
-// Functions for manipulating the MFRC522
 void MFRC522_Init(void);
 uchar MFRC522_Request(uchar reqMode, uchar *TagType);
 uchar MFRC522_Anticoll(uchar *serNum);
@@ -124,3 +124,4 @@ uchar MFRC522_Write(uchar blockAddr, uchar *writeData);
 uchar MFRC522_Auth(uchar authMode, uchar BlockAddr, uchar *Sectorkey, uchar *serNum);
 uchar MFRC522_Read(uchar blockAddr, uchar *recvData);
 void MFRC522_Halt(void);
+#endif
